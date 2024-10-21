@@ -1,10 +1,16 @@
 import React from "react";
-import From from "./Components/Form/From";
-
+import FormSec from "./Components/Form/FormSec";
+import UpdateSec from "./Components/Form/UpdateSec";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 function App() {
   return (
     <>
-      <From />
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<FormSec />} />
+          <Route path="/update/:id" element={<UpdateSec />} />
+        </Routes>
+      </BrowserRouter>
     </>
   );
 }

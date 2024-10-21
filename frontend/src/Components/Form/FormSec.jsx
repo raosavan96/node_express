@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 
-function From() {
+function FormSec() {
   const [inValue, setInValue] = useState("");
   const [serverDatas, setServerData] = useState([]);
-  console.log(serverDatas);
 
   useEffect(() => {
     fetch("/api/data")
@@ -30,6 +30,7 @@ function From() {
       })
       .then((result) => {
         console.log(result);
+       
       });
   }
 
@@ -58,8 +59,21 @@ function From() {
         </form>
         <div>
           <ul>
-            {serverDatas.map((value) => (
-              <li className="text-white text-center mt-5">{value.inValue} </li>
+            {serverDatas.map((value, index) => (
+              <li className="text-white flex max-w-96 justify-between mx-auto mt-5">
+                <p>{value.inValue}</p>
+                <div>
+                  <Link to={`/update/${index}`}>
+                    <button className="bg-green-500 py-1 px-3 rounded-lg me-4 ">
+                      Update
+                    </button>
+                  </Link>
+
+                  <button className="bg-red-500 py-1 px-3 rounded-lg">
+                    Delete
+                  </button>
+                </div>
+              </li>
             ))}
           </ul>
         </div>
@@ -68,4 +82,4 @@ function From() {
   );
 }
 
-export default From;
+export default FormSec;

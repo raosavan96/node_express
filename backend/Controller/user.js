@@ -17,3 +17,16 @@ exports.userDataContoller = (req, res) => {
 exports.dataController = (req, res) => {
   res.json(datas);
 };
+
+exports.mainUserController = (req, res) => {
+  const useId = req.params.id;
+  const mainUserId = datas[useId];
+  res.send(mainUserId);
+};
+
+exports.updateValueContorller = (req, res) => {
+  const id = req.params.upid;
+  const updatedValue = req.body.apiId;
+  datas[id].inValue = updatedValue;
+  res.send({ message: "Successfully updated" });
+};
